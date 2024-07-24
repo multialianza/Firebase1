@@ -1,30 +1,33 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div class="container my-5">
+    <h3>AGREGAR USUARIOS</h3>
+    <AgregaUsers />
+    <hr class="my-5" />
+    <h3>TABLA DE USUARIOS</h3>
+    <MuestraUsers />
+  </div>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+import {
+  getFirestore,
+  collection,
+  onSnapshot,
+  addDoc,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
+import firebaseApp from "./firebaseConfig.js";
+import AgregaUsers from "./components/AgregaUsers.vue";
+import MuestraUsers from "./components/MuestraUsers.vue";
 
-nav {
-  padding: 30px;
-}
+export default {
+  name: "App",
+  components: {
+    AgregaUsers,
+    MuestraUsers,
+  },
+};
+</script>
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+<style></style>
